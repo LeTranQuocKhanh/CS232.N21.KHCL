@@ -47,8 +47,8 @@ def EncodeData(current_node : Node, code : str,coded_dict):
   if current_node.character != '-':
     coded_dict[current_node] = code
     code = ""
-  EncodeData(current_node.left,code + '0',coded_dict )#0
-  EncodeData(current_node.right, code + '1',coded_dict )#1
+  EncodeData(current_node.left,code + '0',coded_dict )
+  EncodeData(current_node.right, code + '1',coded_dict )
   return coded_dict
 
 
@@ -208,7 +208,7 @@ def pad_encoded_text(encoded_text):
   return encoded_text,extra_padding
 
 def readBinaryFile(filename,red_length,green_length,blue_length):
-  file = open(filename,"rb")  #
+  file = open(filename,"rb")  
   color_strings=["","","",""]
   color_lengths=[red_length,green_length,blue_length]
 
@@ -385,5 +385,3 @@ def RunColoredCompression(filename,process_method_of_image):
   im = None
   stop = timeit.default_timer()
   return im,f"{path}{name_without_extension}decompressedversion{extension}",calculated_values
-
-
