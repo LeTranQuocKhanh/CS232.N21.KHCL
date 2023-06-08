@@ -42,7 +42,7 @@ def upload_file():
     y = height / 12
     uploaded_img_label.place(x=x/2, y=y*1.7)
     uploaded_img_label.image = uploaded_img
-    uploaded_img_label['image']=uploaded_img #
+    uploaded_img_label['image']=uploaded_img
 
     global input_image_size_label
     lastfilename=filename
@@ -96,7 +96,7 @@ def UploadText():
     if "uploaded_img_label" in globals():
         uploaded_img_label.image = None
         input_image_size_label.config(text="")
-        uploaded_img_label['image'] = None  #
+        uploaded_img_label['image'] = None 
     global filename
     filename = ""
 
@@ -204,11 +204,11 @@ def TextDeCompressThread():
     switchButtonState(level2decompress)
 
     animation_label = Label(my_w,background='bisque')
-    animation_label=ToggleAnimation(animation_label,x * 6.5 + 50,y * 1.7 + 50)#animation_label,x*6.5, y*8
+    animation_label=ToggleAnimation(animation_label,x * 6.5 + 50,y * 1.7 + 50)
     differencevalue_label.config(text="")
     time_decompress.config(text="")
 
-    thread_decompression = threading.Thread(target=TextDeCompression, args=(animation_label, ))  # animation_label
+    thread_decompression = threading.Thread(target=TextDeCompression, args=(animation_label, ))
     thread_decompression.start()
 
 def TextDeCompression(animation_label):
@@ -587,7 +587,7 @@ def ComputeDifference(decompressed_img,filename):
         inputcolor="Gray"
     else:
         inputcolor="Colored"
-    if (numpy.isscalar(output_image_array[0][0])):#isinstance(output_image_array[0][0],array
+    if (numpy.isscalar(output_image_array[0][0])):
         outputcolor = "Gray"
         input_image = input_image.convert('L')
         input_image_array = numpy.array(input_image)
