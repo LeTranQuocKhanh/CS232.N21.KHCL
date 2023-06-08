@@ -42,7 +42,7 @@ def upload_file():
     y = height / 12
     uploaded_img_label.place(x=x/2, y=y*1.7)
     uploaded_img_label.image = uploaded_img
-    uploaded_img_label['image']=uploaded_img
+    uploaded_img_label['image']=uploaded_img 
 
     global input_image_size_label
     lastfilename=filename
@@ -96,7 +96,7 @@ def UploadText():
     if "uploaded_img_label" in globals():
         uploaded_img_label.image = None
         input_image_size_label.config(text="")
-        uploaded_img_label['image'] = None 
+        uploaded_img_label['image'] = None
     global filename
     filename = ""
 
@@ -168,7 +168,7 @@ def TextCompress(animation_label):
     tk.messagebox.showinfo(f"Compress Text",f"Text Has Been Compressed Successfully")
 
 def TextDeCompressThread():
-    x = width / 10#15
+    x = width / 10
     y = height / 12
     if 'zipfilename' not in globals() or zipfilename == '':
         tk.messagebox.showwarning("DeCompress Data", "Please Upload an Zip file to decompress data")
@@ -335,7 +335,7 @@ def CompressionThread(color_of_compression,process_method_of_image):
     thread_compression.start()
 
 def DeCompressionThread():
-    x = width / 10#15
+    x = width / 10
     y = height / 12
     if 'zipfilename' not in globals() or zipfilename == '':
         tk.messagebox.showwarning("DeCompress Data", "Please Upload an Zip file to decompress data")
@@ -369,10 +369,10 @@ def DeCompressionThread():
     switchButtonState(level2decompress)
 
     animation_label = Label(my_w,background='bisque')
-    animation_label=ToggleAnimation(animation_label,x * 6.5 + 50,y * 1.7 + 50)#animation_label,x*6.5, y*8
+    animation_label=ToggleAnimation(animation_label,x * 6.5 + 50,y * 1.7 + 50)
     differencevalue_label.config(text="")
     time_decompress.config(text="")
-    thread_decompression = threading.Thread(target=DeCompression,args=(animation_label, ))#animation_label
+    thread_decompression = threading.Thread(target=DeCompression,args=(animation_label, ))
     thread_decompression.start()
 
 def DeCompression(animation_label):
@@ -411,7 +411,7 @@ def DeCompression(animation_label):
 
     decompressed_img_label.place(x=x*6.5, y=y*1.7)
     decompressed_img_label.image = decompressed_img
-    decompressed_img_label['image']=decompressed_img #
+    decompressed_img_label['image']=decompressed_img 
     ClearImage()
     differencevalue_label.config(text=f"Difference = {differencevalue}")
     time_decompress.config(text=f"Execution time = {round(time_for_decompress,2)}s")
