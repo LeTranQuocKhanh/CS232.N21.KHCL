@@ -16,14 +16,14 @@ def AverageLength(first_data,red_map,green_map,blue_map):
   return average_length
 
 def Entropy(first_data,red_map,green_map,blue_map):
-  Entropy = 0
+  entropy = 0
   key: Node
   maps = [red_map,green_map,blue_map]
   for coded_map in maps:
     for key in coded_map:
       temp_probabilty = key.data / float(total_length)
-      Entropy = Entropy + (temp_probabilty * math.log2(temp_probabilty))
-  return -1 * (Entropy / 3)
+      entropy = entropy + (temp_probabilty * math.log2(temp_probabilty))
+  return -1 * (entropy / 3)
 
 def CompressionRatio():
   return 8 / average_length
