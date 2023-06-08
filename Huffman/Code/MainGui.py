@@ -164,7 +164,7 @@ def TextCompress(animation_label):
     switchButtonState(level2decompress)
 
     animation_label = ToggleAnimation(animation_label)
-    ShowCalculatedValues(calculated_values)  # differencevalue compressed_img_label,
+    ShowCalculatedValues(calculated_values)
     tk.messagebox.showinfo(f"Compress Text",f"Text Has Been Compressed Successfully")
 
 def TextDeCompressThread():
