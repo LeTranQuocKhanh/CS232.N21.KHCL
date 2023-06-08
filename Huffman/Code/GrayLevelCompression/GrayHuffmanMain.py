@@ -114,7 +114,7 @@ def GetBitArray(encoded_string):
 
   return list
 def readBinaryFile(filename):
-  file = open(filename,"rb")  #
+  file = open(filename,"rb")
   count = 0
   decoded_string = ""
   byte = file.read(1)
@@ -294,4 +294,3 @@ def RunGrayCompression(filename,process_method_of_image):
   stop = timeit.default_timer()
 
   return im,f"{path}{name_without_extension}decompressedversion{extension}",calculated_values
-
