@@ -204,7 +204,7 @@ def get_byte_array(padded_encoded_text):
   return b
 
 def RunTextCompression(filename):
-  extension = filename[len(filename) - 4:len(filename)]
+  extension = filename[len(filename) - len(filename.split(".")[1])-1:len(filename)]
   global exten
   exten = extension
   #print(extension)
