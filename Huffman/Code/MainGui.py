@@ -66,7 +66,7 @@ def UploadZip():
     zip_name_label.place(x=width / 2.8, y=(height/1.5) -20)
 
 def UploadText():
-    f_types = [('Text Files','*.txt')]
+    f_types = [('Text Files','*.txt'),('HTML Files','*.html'),('CSV Files','*.csv')]
     global textfilename
     global text_box
     global lasttextfilename
@@ -222,10 +222,10 @@ def TextDeCompression(animation_label):
     path = zipfilename[0:len(zipfilename) - len(name_without_extension) - len(extension) + 1]
     name_without_extension = name_without_extension.replace("_TXTBinandMap", "")
     start_time = time.time()
-    decompressed_text = tlg.DecodeData(f"{path}{name_without_extension}",f"{name_without_extension}", True)
+    decompressed_text,extention = tlg.DecodeData(f"{path}{name_without_extension}",f"{name_without_extension}", True)
     end_time = time.time()
     first_text_path = f"{path}{name_without_extension}"
-    first_text_path = first_text_path[0:len(first_text_path) - 1] + ".txt"
+    first_text_path = first_text_path[0:len(first_text_path) - 1] + extention
     try:
         f = open(first_text_path, "r", encoding='utf-8')
         first_text = f.read()
@@ -259,7 +259,10 @@ def TextDeCompression(animation_label):
 
     decompressed_text_box.place(x=x * 6.5, y=y * 1.7)
     ClearImage()
-    differencevalue_label.config(text=f"Difference = {differencevalue}")
+    if differencevalue == -1:
+        differencevalue_label.config(text=f"Can not find the original file to compare")
+    else:
+        differencevalue_label.config(text=f"Difference = {differencevalue}")   
     time_decompress.config(text=f"Execution time = {round(time_for_decompress,2)}s")
     differencevalue_label.place(x=x * 7, y=y * 6+25)
     time_decompress.place(x=x * 7, y=y * 6+45)
@@ -413,7 +416,10 @@ def DeCompression(animation_label):
     decompressed_img_label.image = decompressed_img
     decompressed_img_label['image']=decompressed_img 
     ClearImage()
-    differencevalue_label.config(text=f"Difference = {differencevalue}")
+    if differencevalue == -1:
+        differencevalue_label.config(text=f"Can not find the original file to compare")
+    else:
+        differencevalue_label.config(text=f"Difference = {differencevalue}") 
     time_decompress.config(text=f"Execution time = {round(time_for_decompress,2)}s")
     differencevalue_label.place(x=x*7, y=y * 6+25)
     time_decompress.place(x=x*7, y=y*6+45)

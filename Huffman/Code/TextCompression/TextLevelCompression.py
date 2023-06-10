@@ -60,11 +60,16 @@ def SaveEncodedData(first_data,character_map,coded_map,mainpath,name):
   f = open(f"{mainpath}compressedbinary.bin", "wb")
   f.write(bytes(b))
   f.close()
+  global exten
+  insert_exten = 1
   with open(f"{mainpath}Map.csv", 'w', encoding='UTF8', newline='') as csvfile:
     csvwriter = csv.writer(csvfile)
     for key, value in character_map.items():
-      csvwriter.writerow([key, value])
-
+      if insert_exten == 1:
+        csvwriter.writerow([key, value,exten])
+        insert_exten = 0
+      else:
+        csvwriter.writerow([key, value])
   zipObj.write(f"{mainpath}Map.csv", f'{name}Map.csv')
   zipObj.write(f"{mainpath}compressedbinary.bin", f'{name}compressedbinary.bin')
   os.remove(f"{mainpath}Map.csv")
@@ -91,7 +96,7 @@ def ReadDictionaryFile(path):
       char_map.update({csvlist[i][0]: int(csvlist[i][1])})
 
     root = BuildHuffmanTree(char_map)
-    return root
+    return root,csvlist[0][2]
 def DecodeData(mainpath,name,fromexternalzip=False):
   zipObj = ZipFile(f'{mainpath}TXTBinandMap.zip', 'r')
 
@@ -100,7 +105,7 @@ def DecodeData(mainpath,name,fromexternalzip=False):
 
   bit_list = list(ReadBinaryFile(f'{mainpath}compressedbinary.bin'))
 
-  root_node= ReadDictionaryFile(f'{mainpath}Map.csv')
+  root_node,extention= ReadDictionaryFile(f'{mainpath}Map.csv')
 
   temp_node = root_node
   result = ""
@@ -122,12 +127,12 @@ def DecodeData(mainpath,name,fromexternalzip=False):
         result = result + str(temp_node.character)
         temp_node = root_node
 
-  f = open(f"{mainpath}decodedText.txt", "w", encoding='utf-8')
+  f = open(f"{mainpath}decodedText{extention}", "w", encoding='utf-8')
   f.write(f"{result}")
   os.remove(f"{mainpath}Map.csv")
   os.remove(f"{mainpath}compressedbinary.bin")
 
-  return result
+  return result,extention
 def BuildHuffmanTree(char_map):
   node_list = PriorityQueue()
   root_node = None
@@ -199,7 +204,10 @@ def get_byte_array(padded_encoded_text):
   return b
 
 def RunTextCompression(filename):
-  extension = filename[len(filename) - 4:len(filename)]
+  extension = filename[len(filename) - len(filename.split(".")[1])-1:len(filename)]
+  global exten
+  exten = extension
+  #print(extension)
   name_without_extension=""
   if("/" in filename):
     name_without_extension = filename[filename.rindex('/') + 1:filename.index(extension)] + '_'
