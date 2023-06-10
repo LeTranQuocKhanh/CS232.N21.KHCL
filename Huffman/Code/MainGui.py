@@ -66,7 +66,7 @@ def UploadZip():
     zip_name_label.place(x=width / 2.8, y=(height/1.5) -20)
 
 def UploadText():
-    f_types = [('Text Files','*.txt')]
+    f_types = [('Text Files','*.txt'),('HTML Files','*.html'),('CSV Files','*.csv')]
     global textfilename
     global text_box
     global lasttextfilename
