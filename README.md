@@ -14,7 +14,6 @@
 | ------ |:-------------:| ----------------------:|----------:|--------------------------------------------------------:|-------------------------:
 | 1      | 20520465      | Nguyễn Vũ Dương        |Nhóm trưởng|[duongve13112002](https://github.com/duongve13112002)    |20520465@gm.uit.edu.vn   |
 | 2      | 20520574      | Lê Trần Quốc Khánh     |Thành viên |[LeTranQuocKhanh](https://github.com/LeTranQuocKhanh)    |20520574@gm.uit.edu.vn   |
-| 3      | 20521183      | Huỳnh Đình Kim Điền    |Thành viên |[kimdiendo](https://github.com/kimdiendo)                |20521183@gm.uit.edu.vn   |
 
 ## GIỚI THIỆU MÔN HỌC
 * **Tên môn học:** TÍNH TOÁN ĐA PHƯƠNG TIỆN  
