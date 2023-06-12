@@ -744,7 +744,7 @@ width = 700
 my_w.configure(background='bisque')
 CreateScreen(width,height);
 my_w.resizable(False, False)
-my_w.title('Compression with Huffman')
+my_w.title('Huffman')
 font=('times', 8, 'bold')
 my_w.protocol("WM_DELETE_WINDOW", on_closing)
 
